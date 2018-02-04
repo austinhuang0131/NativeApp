@@ -4,6 +4,7 @@ var observableModule = require("data/observable");
 var device = require("platform").device();
 var pageData = new observableModule.Observable();
 var time = 0;
+var goal = 0;
 
 https.get("https://exuberant-authority.glitch.me/database?user="+device.uuid, res => {
   let rawData = '';
@@ -13,6 +14,7 @@ https.get("https://exuberant-authority.glitch.me/database?user="+device.uuid, re
 		const parsedData = JSON.parse(rawData);
 		console.log(parsedData);
 		time = parsedData.time;
+		goal = parsedData.goal;
 	} catch (e) {
 		console.error(e.message);
 	}
@@ -22,6 +24,8 @@ https.get("https://exuberant-authority.glitch.me/database?user="+device.uuid, re
 function pageLoaded(args) {
     var page = args.object;
     page.bindingContext = pageData;
+	pageData.set("time", time);
+	pageData.set("goal", goal);
 }
 exports.pageLoaded = pageLoaded;
 
@@ -39,7 +43,3 @@ app.android.registerBroadcastReceiver(android.content.Intent.ACTION_SCREEN_ON,
 				time += new Date().getTime() - temptime; // ms
 			});
 	});
-
-exports.getTime = function() {
-	pageData.set("time", time);
-}
