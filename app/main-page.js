@@ -2,7 +2,7 @@
 var vmModule = require("./main-view-model");
 var https = require("https");
 var observableModule = require("data/observable");
-var device = require("platform/device");
+var device = require("platform").device();
 var observableArray = require("data/observable-array");
 var images = new observableArray.ObservableArray([]);
 var pageData = new observableModule.Observable();
