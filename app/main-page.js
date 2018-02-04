@@ -1,4 +1,3 @@
-
 var vmModule = require("./main-view-model");
 var https = require("https");
 var observableModule = require("data/observable");
