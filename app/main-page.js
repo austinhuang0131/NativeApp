@@ -43,3 +43,13 @@ app.android.registerBroadcastReceiver(android.content.Intent.ACTION_SCREEN_ON,
 				time += new Date().getTime() - temptime; // ms
 			});
 	});
+
+// Gets image
+exports.pet = function() {
+	// Happy-SemiHappy-Neutral-SemiSad-Sad
+	if (parseInt(pageData.get("time")) <= parseInt(pageData.get("goal")) * 0.25) pageData.set("pet", "https://github.com/HarshdipD/Doggie/blob/master/Graphics/happydog.gif");
+	else if (parseInt(pageData.get("time")) <= parseInt(pageData.get("goal")) * 0.5) pageData.set("pet", "https://raw.githubusercontent.com/HarshdipD/Doggie/master/Graphics/semi-happy-dog.gif?token=AP4pMdS7J-CncZKyzwyEbI9Xbs1LBhnRks5af7-pwA%3D%3D");
+	else if (parseInt(pageData.get("time")) <= parseInt(pageData.get("goal")) * 0.75) pageData.set("pet", "https://raw.githubusercontent.com/HarshdipD/Doggie/master/Graphics/neutral-dog.gif?token=AP4pMcCmAogRkOqZ-Zq_dmKL_7X2fMoCks5af7_CwA%3D%3D");
+	else if (parseInt(pageData.get("time")) <= parseInt(pageData.get("goal"))) pageData.set("pet", "https://raw.githubusercontent.com/HarshdipD/Doggie/master/Graphics/semi-sad%3Ddog.gif?token=AP4pMfIrdxzHhiYiw4ahQu3jYhfIoNuXks5af79owA%3D%3D");
+	else pageData.set("pet", "https://raw.githubusercontent.com/HarshdipD/Doggie/master/Graphics/sad-dog.gif?token=AP4pMRTwKXmEYj1Jbhhz1OtgX44hQjhWks5af7_pwA%3D%3D");
+}
