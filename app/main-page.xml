@@ -2,10 +2,11 @@
     
         <StackLayout orientation="vertical">
 
-            <TextField width="300px" text="{{txtKeyword}}"  hint="search keyword" id="txtKeyword" />
-
+            <!-- Set goal -->
+            <TextField width="300px" text="{{txtKeyword}}"  hint="Enter your daily goal, in minutes..." id="txtKeyword" />
             <Button text="Search" height="50px" tap="signin" style="background-color:green;width:300px;border:none;font-size:20px;" />
             
+            <!-- Actual usage time vs. Goal -->
             <Progress value="{{ time }}" maxValue="{{ goal }}">
         </StackLayout>
 
