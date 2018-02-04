@@ -1,7 +1,7 @@
 <Page loaded="pageLoaded" background-color="blue">
     
         <StackLayout orientation="vertical">
-            <!-- Everything is separated in parts -->
+            <!-- Everything is separated in parts. Must be used accordingly with parts in main-page.js! -->
 
             <!-- Set goal -->
             <TextField width="300px" text="{{txtKeyword}}"  hint="Enter your daily goal, in minutes..." id="txtKeyword" />
@@ -11,6 +11,7 @@
             <Progress value="{{ time }}" maxValue="{{ goal }}">
                 
             <!-- Pet image -->
+            <Image src="{{ pet }}">
         </StackLayout>
 
 </Page>
