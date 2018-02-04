@@ -1,6 +1,7 @@
 <Page loaded="pageLoaded" background-color="blue">
     
         <StackLayout orientation="vertical">
+            <!-- Everything is separated in parts -->
 
             <!-- Set goal -->
             <TextField width="300px" text="{{txtKeyword}}"  hint="Enter your daily goal, in minutes..." id="txtKeyword" />
@@ -8,6 +9,8 @@
             
             <!-- Actual usage time vs. Goal -->
             <Progress value="{{ time }}" maxValue="{{ goal }}">
+                
+            <!-- Pet image -->
         </StackLayout>
 
 </Page>
