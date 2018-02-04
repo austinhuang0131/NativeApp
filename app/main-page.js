@@ -6,6 +6,17 @@ var pageData = new observableModule.Observable();
 var time = 0;
 var goal = 0;
 
+// Listen for events
+app.android.registerBroadcastReceiver(android.content.Intent.ACTION_SCREEN_ON,
+	function onReceiveCallback(context: android.content.Context, intent: android.content.Intent) {
+		var temptime = new Date().getTime();
+		app.android.registerBroadcastReceiver(android.content.Intent.ACTION_SCREEN_OFF,
+			function onReceiveCallback(context: android.content.Context, intent: android.content.Intent) {
+				time += new Date().getTime() - temptime; // ms
+			});
+	});
+
+// Get goal
 https.get("https://exuberant-authority.glitch.me/database?user="+device.uuid, res => {
   let rawData = '';
   res.on('data', (chunk) => { rawData += chunk; });
@@ -21,6 +32,8 @@ https.get("https://exuberant-authority.glitch.me/database?user="+device.uuid, re
   });
 })
 
+// Time & Goal
+
 function pageLoaded(args) {
     var page = args.object;
     page.bindingContext = pageData;
@@ -33,16 +46,6 @@ exports.pageLoaded = pageLoaded;
 exports.signin = function() {
 	https.post("https://exuberant-authority.glitch.me/database?user="+device.uuid+"&goal="+pageData.get('txtKeyword'));
 };
-
-// Listen for events
-app.android.registerBroadcastReceiver(android.content.Intent.ACTION_SCREEN_ON,
-	function onReceiveCallback(context: android.content.Context, intent: android.content.Intent) {
-		var temptime = new Date().getTime();
-		app.android.registerBroadcastReceiver(android.content.Intent.ACTION_SCREEN_OFF,
-			function onReceiveCallback(context: android.content.Context, intent: android.content.Intent) {
-				time += new Date().getTime() - temptime; // ms
-			});
-	});
 
 // Gets image
 exports.pet = function() {
