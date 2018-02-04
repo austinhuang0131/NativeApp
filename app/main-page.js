@@ -40,3 +40,7 @@ app.android.registerBroadcastReceiver(android.content.Intent.ACTION_SCREEN_ON,
 				time += new Date().getTime() - temptime; // ms
 			});
 	});
+
+exports.getTime = function() {
+	pageData.set("time", time);
+}
